@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>搜索</title>
+    <meta charset="utf-8">
+    <script src="jquery-1.12.2.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="Content/bootstrap-select.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="Scripts/bootstrap-select.js"></script>
+    <script src="Scripts/i18n/defaults-zh_CN.js"></script>
+</head>
+<body>
+    <h1>动漫资源查询</h1>
+    <input id="Keyword" type="text" class="search-keyword"/><input id="Search" type="button" value="查询" class="search-submit"/><input id="Reset" type="button" value="重置" />
+    <h3>查询类别</h3>
+    <select id="Types" class="selectpicker" data-live-search="true"></select>
+    <h3>查询字幕组</h3>
+    <select id="Subgroups" class="selectpicker" data-live-search="true"></select>
+
+    <div id="Result"></div>
+    <div class="z"></div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.ajax({//获取资源类型
+                url: "http://res.chinacloudsites.cn/type",
+                success: function (result) {
+                    var typesobj = document.getElementById("Types");
+                    var Option = document.createElement("OPTION");
+                    Option.value = "null";
+                    Option.text = "";
+                    typesobj.options.add(Option);
+                    for (var j = 0; j < result.Types.length; j++) {
+                        var Option = document.createElement("OPTION");
+                        Option.value = result.Types[parseInt(j)].Id;
+                        Option.text = result.Types[parseInt(j)].Name;
+                        typesobj.options.add(Option);
+                    }
+                    $('#Types').selectpicker('render');
+                    $('#Types').selectpicker('refresh');
+                    //for (var i = 0; i < result.Types.length; i++) {
+                    //    //$("#Types1").append("<li class=\"items\"" + "data-value=" + result.Types[parseInt(i)].Id + ">" + result.Types[parseInt(i)].Name + "</li>");
+                    //    document.getElementById('Types1').innerHTML += "<li class=\"items\"" + "data-value=" + result.Types[parseInt(i)].Id + ">" + result.Types[parseInt(i)].Name + "</li>";
+                    //}
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+            $.ajax({//获取字幕组信息
+                url: "http://res.chinacloudsites.cn/subgroup",
+                success: function (result) {
+                    var subgroupssobj = document.getElementById("Subgroups");
+                    var Option = document.createElement("OPTION");
+                    Option.value = "null";
+                    Option.text = "";
+                    subgroupssobj.options.add(Option);
+                    for (var i = 0; i < result.Subgroups.length; i++) {
+                        var Option = document.createElement("OPTION");
+                        Option.value = result.Subgroups[parseInt(i)].Id;
+                        Option.text = result.Subgroups[parseInt(i)].Name;
+                        subgroupssobj.options.add(Option);
+                    }
+                    $('#Subgroups').selectpicker('render');
+                    $('#Subgroups').selectpicker('refresh');
+                    //$("#Subgroup").empty();
+                    //for (var i = 0; i < result.Subgroups.length; i++) {
+                    //    $("#Subgroup").append("<li class=\"filter-item items\" data-filter=\"" + result.Subgroups[parseInt(i)].Name + "\" data-value=" + result.Subgroups[parseInt(i)].Id + ">" + result.Subgroups[parseInt(i)].Name + "</li>");
+                    //}
+                    //$("#Subgroupfiltering").load(this.url)
+                    //document.getElementById(Searchbox).innerHTML="<div class=\"input-group\"><span class=\"input-group-addon\" id=\"search-icon3\"><span class=\"fa fa-search\"></span><a href=\"#\" class=\"fa fa-times hide filter-clear\"><span class=\"sr-only\">Clear filter</span></a></span><input type=\"text\" placeholder=\"Search in the list\" id=\"input-bts-ex-4\" class=\"form-control live-search\" aria-describedby=\"search-icon3\" tabindex=\"1\" /></div>";
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+            $('.selectpicker').selectpicker('refresh');
+            $("#Search").click(function () {//获取搜索结果
+                $.ajax({
+                    url: "http://res.chinacloudsites.cn/list?keyword=" + $("#Keyword").val() + "&type=" + document.getElementById("Types").value + "&subgroup=" + document.getElementById("Subgroups").value,
+                    success: function (result) {
+                        $('.z').empty();
+                        for (var i=0; i<result.Resources.length;i++) {
+                            $('.z').append(result.Resources[parseInt(i)].Title+"<br>");
+                            $('.z').append(result.Resources[parseInt(i)].SubgroupName + "<br>");
+                            $('.z').append("磁力链接：" + "<a href=\"" + result.Resources[parseInt(i)].Magnet + "\">" + result.Resources[parseInt(i)].Magnet + "<br>");
+                            $('.z').append("原帖链接：" + "<a href=\"" + result.Resources[parseInt(i)].PageUrl + "\">" + result.Resources[parseInt(i)].PageUrl + "<br>");
+                            $('.z').append(result.Resources[parseInt(i)].FileSize + "<br>" + "<br>");
+                        }
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                })
+            })
+            $("#Reset").click(function () {//重置
+                $("#Keyword").val("");
+            })
+        });
+    </script>
+</body>
+</html>
