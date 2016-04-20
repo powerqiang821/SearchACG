@@ -18,3 +18,23 @@ c:\users\fish\documents\visual studio 2015\Projects\search1\search1\bin\Microsof
 c:\users\fish\documents\visual studio 2015\Projects\search1\search1\obj\Debug\search1.csprojResolveAssemblyReference.cache
 c:\users\fish\documents\visual studio 2015\Projects\search1\search1\obj\Debug\search1.dll
 c:\users\fish\documents\visual studio 2015\Projects\search1\search1\obj\Debug\search1.pdb
+D:\VSProject\search1\search1\bin\roslyn\csc.exe
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VSProject\search1\search1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VSProject\search1\search1\bin\roslyn\System.Collections.Immutable.dll
+D:\VSProject\search1\search1\bin\roslyn\System.Reflection.Metadata.dll
+D:\VSProject\search1\search1\bin\roslyn\vbc.exe
+D:\VSProject\search1\search1\bin\roslyn\VBCSCompiler.exe
+D:\VSProject\search1\search1\bin\roslyn\VBCSCompiler.exe.config
+D:\VSProject\search1\search1\bin\search1.dll.config
+D:\VSProject\search1\search1\bin\search1.dll
+D:\VSProject\search1\search1\bin\search1.pdb
+D:\VSProject\search1\search1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VSProject\search1\search1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VSProject\search1\search1\obj\Debug\search1.csprojResolveAssemblyReference.cache
+D:\VSProject\search1\search1\obj\Debug\search1.dll
+D:\VSProject\search1\search1\obj\Debug\search1.pdb

@@ -7,17 +7,27 @@
     <script src="jquery-1.12.2.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="Content/bootstrap-select.css" rel="stylesheet" />
+    <link href="Content/StyleSheet.css" rel="stylesheet" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="Scripts/bootstrap-select.js"></script>
     <script src="Scripts/i18n/defaults-zh_CN.js"></script>
 </head>
 <body>
     <h1>动漫资源查询</h1>
-    <input id="Keyword" type="text" class="search-keyword"/><input id="Search" type="button" value="查询" class="search-submit"/><input id="Reset" type="button" value="重置" />
-    <h3>查询类别</h3>
-    <select id="Types" class="selectpicker" data-live-search="true"></select>
-    <h3>查询字幕组</h3>
-    <select id="Subgroups" class="selectpicker" data-live-search="true"></select>
+    <div class="middle">
+        <input id="Keyword" type="text" class="search"/><input type="submit" id="Search" value="查询" class="blue"/> <input type="submit" id="Reset" value="重置" class="blue"/>
+    </div>
+    <div>
+        <table align="center">
+            <tr style="height:40px">
+                <td><p class="caterogy">查询类别</p></td>
+                <td><select id="Types" class="selectpicker" data-live-search="true"></select></td>
+                <td><p class="caterogy">查询字幕组</p></td>
+                <td><select id="Subgroups" class="selectpicker" data-live-search="true"></select></td>
+            </tr>
+        </table>
+    </div>
+    
 
     <div id="Result"></div>
     <div class="z"></div>
